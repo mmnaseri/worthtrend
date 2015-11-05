@@ -84,7 +84,7 @@ public class ScheduleTransactionCommand implements Command {
         }
         final Recurrence recurrence = new Recurrence();
         recurrence.setType(recurrenceType);
-        console.print("How many " + recurrenceType.name().toLowerCase() + "s should pass between two occurrences?");
+        console.print("How many " + recurrenceType.name().toLowerCase() + "s should pass between two occurrences? ");
         recurrence.setFrequency(Math.max(1, console.read(Integer.class)));
         console.print("Does the recurrence end? [Y/N] ");
         if (console.read("[yYnN]").equalsIgnoreCase("y")) {
@@ -99,15 +99,16 @@ public class ScheduleTransactionCommand implements Command {
         final Termination termination;
         if (console.read("[nNdD]").equalsIgnoreCase("n")) {
             termination = new IterativeTermination();
-            console.print("How many times should this transaction run?");
+            console.print("How many times should this transaction run? ");
             ((IterativeTermination) termination).setIterations(console.read(Integer.class));
         } else {
             termination =  new TimedTermination();
-            console.print("When should this transaction end?");
+            console.print("When should this transaction end? ");
             try {
                 ((TimedTermination) termination).setEndDate(dateFormat.parse(console.read("\\d+/\\d+/\\d+")));
             } catch (ParseException e) {
                 console.println("Invalid date format");
+                return null;
             }
         }
         return termination;

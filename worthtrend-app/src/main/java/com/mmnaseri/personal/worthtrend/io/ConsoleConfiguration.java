@@ -1,6 +1,7 @@
 package com.mmnaseri.personal.worthtrend.io;
 
 import com.mmnaseri.personal.worthtrend.io.impl.ConsoleImpl;
+import com.mmnaseri.personal.worthtrend.io.impl.FileOutputManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,8 +13,13 @@ import org.springframework.context.annotation.Configuration;
 public class ConsoleConfiguration {
 
     @Bean
-    public static Console console() {
+    public Console console() {
         return new ConsoleImpl(System.out, System.in);
+    }
+
+    @Bean
+    public FileOutputManager fileOutputManager() {
+        return new FileOutputManager();
     }
 
 }
