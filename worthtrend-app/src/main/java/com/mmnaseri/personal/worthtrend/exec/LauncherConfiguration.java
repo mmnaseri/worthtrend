@@ -1,5 +1,6 @@
 package com.mmnaseri.personal.worthtrend.exec;
 
+import com.mmnaseri.personal.worthtrend.exec.impl.DefaultTransactionCalculator;
 import com.mmnaseri.personal.worthtrend.io.Console;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,11 @@ public class LauncherConfiguration {
         final Thread thread = new Thread(new Launcher(console), "launcher");
         thread.start();
         return thread;
+    }
+
+    @Bean
+    public TransactionCalculator transactionCalculator() {
+        return new DefaultTransactionCalculator();
     }
 
 }
