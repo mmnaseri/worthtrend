@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
 @ComponentScan(useDefaultFilters = false, includeFilters = @ComponentScan.Filter(Configuration.class))
-public class WorthTrendApplication {
+public class ApplicationConfiguration {
 
     public static void main(String[] args) {
-        SpringApplication.run(WorthTrendApplication.class, args);
+        SpringApplication.run(ApplicationConfiguration.class, args);
     }
 
 }
